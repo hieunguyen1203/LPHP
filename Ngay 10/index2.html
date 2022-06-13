@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        Ngày tháng năm sinh :
+        <input type="text" name="ngaysinh" id="ngaysinh" value="" placeholder="Y-m-d vd 2015-1-21">
+
+        <button id="tinh">Tính số tuổi</button>
+    </div>
+
+    <script>
+        document.getElementById("tinh").onclick = function() {
+            var ngaysinh = document.getElementById("ngaysinh").value;
+            // chuyển 1 chuỗi người dùng nhập thành dạng thời gian trong js
+            var t2 = new Date(ngaysinh);
+            // quy đổi ra timestamp tính từ 1.1.1970
+            t2 = t2.getTime();
+            // thời gian hiện tại string
+            var t = new Date();
+            // số 1.1.1970
+            var t1 = t.getTime();
+            console.log(t2);
+            console.log(t1);
+            // số ms
+            var t3 = t1 - t2;
+
+            // quy đổi về năm
+            
+            var msToYear = 365*24*60*60*1000;
+            var year = Math.trunc(t3/msToYear); 
+            var yearMs = year*msToYear;
+
+            // quy đổi về tháng
+
+            var t4 = (t3 - yearMs);
+            var msToMonth = 1000*60*60*24*30;
+            var month = Math.trunc(t4/msToMonth);
+            var monthMs = month*msToMonth;
+            //quy đổi về ngày
+
+            var t5 = t3 - yearMs - monthMs;
+            var msToDay = 1000*60*60*24;
+            var day = Math.trunc(t5/msToDay);
+
+            document.write("tuổi của bạn là : " + (t3/msToYear) + "<br />");
+            document.write("tuổi của bạn là : " + year + "năm - " +month + " tháng" + " - "+ day + "ngày" );
+            
+
+
+        };
+    </script>
+
+</body>
+</html>

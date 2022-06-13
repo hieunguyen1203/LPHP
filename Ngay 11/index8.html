@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #demo1{
+            width: 150px;
+            display: inline-block;
+            height: 150px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        Sự kiện giống hover
+        mouseenter
+        mouseleave
+    </pre>
+
+    <div id="demo1">
+        demo1
+    </div>
+    <div id="demo1">
+        demo1
+    </div>
+    <div id="demo1">
+        demo1
+    </div>
+
+    <script>
+        $().ready(function(){
+            $("#demo1").on("mouseenter", function(){
+                $(this).css("background-color", "red");
+            });
+            $("#demo1").on("mouseleave", function(){
+                $(this).css("background-color", "aquamarine");
+            });
+        });
+    </script>
+</body>
+</html>

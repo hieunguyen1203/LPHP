@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <script src="bootstrap.min.js"></script>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Mulish'!important;
+            font-style: normal!important;
+        }
+        .contact-us {
+            background-color: #FAFAFA;
+            padding: 85px 95px 111px 95px;
+
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 19px;
+
+            margin-bottom: 84px;
+        }
+        .contact-us span {
+            display: block;
+        }
+        .contact-us .row {
+            margin-bottom: 30px!important;
+        }
+        .container-in-touch {
+            padding: 105px 163px 165px 79px;
+            
+            
+        }
+        .title {
+            
+            font-weight: 800;
+            font-size: 45px;
+            line-height: 56px;
+            color: #333333;
+        }
+        .stitle1 {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 23px;
+        }
+        .title2{
+            
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 30px;
+            margin-bottom: 38px;
+        }
+
+        .in-touch p {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 23px;
+        }
+        
+
+        span.home {
+            background-image: url('img/home.png');
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin-right: 24px;
+        }
+        span.mail {
+            background-image: url('img/mail.png');
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin-right: 24px;
+        }
+        span.phone {
+            background-image: url('img/phone-call.png');
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin-right: 24px;
+        }
+
+
+        /* form */
+        .background-input {
+            background-color: #FAFAFA;
+            border-radius: 4px;
+            border: 0;
+            margin-bottom: 17px;
+        }
+        .cinput {
+                 
+            /* width: 445px; */
+            height: 56px;
+
+        }
+        .dinput {
+            /* width: 445px; */
+            height: 156px;
+        }
+        .sbtn {
+            background: #B83B5E;
+            border-radius: 4px;
+            width: 160px;
+            height: 56px;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 20px;
+            color: #FFFFFF;
+            margin-bottom: 79px;
+        }
+        form.cform {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 15px;
+            margin-top: 58px;
+        }
+
+        /* social */
+        span.facebook {
+            background-image: url('img/facebook.png');
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin-right: 24px;
+        }
+        span.instagram {
+            background-image: url('img/instagram.png');
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin-right: 24px;
+        }
+        span.linkedin {
+            background-image: url('img/linkedin.png');
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin-right: 24px;
+        }
+        span.twitter {
+            background-image: url('img/twitter.png');
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin-right: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid container-in-touch">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="title">Get in touch</h1>
+                <p class="stitle1">we are more interested in your thoughts</p>
+
+                <form class="cform">
+                    <input class="form-control background-input cinput" name="ten" placeholder="Your Full Name">
+                    <input class="form-control background-input cinput" name="ten" placeholder="Your Email Address">
+                    <textarea class="form-control background-input dinput" rows="5" placeholder="Your Message"></textarea>
+                    <button class="btn sbtn">Send</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="container contact-us">
+                    <h1 class="title2">Contact Us</h1>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="home"></span>
+                        </div>
+                        <div class="col sm-10">1901 Thornridge Cir. Shiloh, Hawaii 81063</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="mail"></span>
+                        </div>
+                        <div class="col sm-10">willie.jennings@example.com <br />
+                            hellous@example.com
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <span class="phone"></span>
+                        </div>
+                        <div class="col sm-10"> (704) 555-0127 <br />
+                            (704) 555-0128
+                        </div>
+                    </div>
+                    <span class="facebook"></span>
+                    <span class="linkedin"></span>
+                    <span class="twitter"></span>
+                    <span class="instagram"></span>
+                
+
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

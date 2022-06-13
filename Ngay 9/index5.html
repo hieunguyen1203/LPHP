@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" name="diemtb" method="post">
+        <div>
+            toan
+            <input type="text" id="toan" name="toan" value="">
+        </div>
+        <div>
+            van
+            <input type="text" id="van" name="van" value="">
+        </div>
+        <div>
+            anh
+            <input type="text" id="anh" name="anh" value="">
+        </div>
+
+        <p id="tinh" style="width: 100px; background: green">In ra kết quả</p>
+    </form>
+
+    <div id="ketqua">
+
+    </div>
+
+    <script>
+        function diem_trung_binh_xep_loai(toan = 1, van = 1, anh = 1) {
+            let ketqua = { "diemtb": 0, "xl": "" };
+
+            ketqua["diemtb"] = ((toan * 2) + (van * 2) + (anh * 1)) / 5;
+
+            if (ketqua["diemtb"] > 8) {
+                ketqua["xl"] = "giỏi";
+            } else if (ketqua["diemtb"] > 6.5) {
+                ketqua["xl"] = "khá";
+            } else if (ketqua["diemtb"] > 5) {
+                ketqua["xl"] = "tb";
+            } else {
+                ketqua["xl"] = "học lại";
+            }
+
+            // output
+            return ketqua;
+        }
+
+        document.getElementById("tinh").onclick = function () {
+            var t = document.getElementById("toan").value;
+            var v = document.getElementById("van").value;
+            var a = document.getElementById("anh").value;
+            var kq = diem_trung_binh_xep_loai(t, v, a);
+            var noidung = "<p>diem tb : " + kq["diemtb"] + "</p>";
+            noidung += "<p>xếp loại : " + kq["xl"] + "</p>";
+            document.getElementById("ketqua").innerHTML = noidung;
+        }
+
+
+    </script>
+</body>
+
+</html>

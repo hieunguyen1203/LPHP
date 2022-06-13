@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            background-color: wheat;
+            width: 300px;
+            display: flex;
+            padding: 20px 2px;
+            box-sizing: border-box;
+        }
+        #container > div{
+            background-color: blue;
+            padding: 10px;
+            color: #fff;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <button id="btn1">justify-content: center</button>
+    <button id="btn2">justify-content: flex-start</button>
+    <button id="btn3">justify-content: flex-end</button>
+    <button id="btn4">justify-content:  space-around</button>
+    <button id="btn5">justify-content: space-between</button>
+    <script>
+        document.getElementById('btn1').onclick = function(){
+            document.getElementById('container').style.justifyContent = "center";
+        }
+        document.getElementById('btn2').onclick = function(){
+            document.getElementById('container').style.justifyContent = "flex-start";
+        }
+        document.getElementById('btn3').onclick = function(){
+            document.getElementById('container').style.justifyContent = "flex-end";
+        }
+        document.getElementById('btn4').onclick = function(){
+            document.getElementById('container').style.justifyContent = "space-around";
+        }
+        document.getElementById('btn5').onclick = function(){
+            document.getElementById('container').style.justifyContent = "space-between";
+        }
+    </script>
+</body>
+</html>
