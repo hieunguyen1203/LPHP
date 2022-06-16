@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5d822482-620d-4cd2-87b9-e7110e9dc7bc" name="lphp.abc" url="http://lphp.abc">
+        <fileTransfer mountedRoot="C:\xampp\htdocs\lphp.abc" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

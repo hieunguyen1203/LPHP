@@ -16,6 +16,7 @@
     </pre>
 
     <?php
+    
     $can_nang = "";
     $chieu_cao = "";
     if( !empty($_GET['can_nang']) && !empty($_GET['chieu_cao']) ){
