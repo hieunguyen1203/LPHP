@@ -32,7 +32,6 @@
         so sánh require và require_once
         require gọi bao nhiêu lần nạp bấy nhiêu lần
         require_once chỉ nạp 1 lần duy nhất dù gọi bao nhiêu lần
-
     </pre>
 
 </body>
