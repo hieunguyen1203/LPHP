@@ -136,6 +136,7 @@ if (!empty($_POST)) {
         var regexHoten = /^([a-z]{2,7}){0,1}( [a-z]{2,7}){1,4}$/;
         var errors = [];
 
+
         // Test the string against the regular expression
         if(!regexHoten.test(hoten)) {
             alert("Họ tên không hợp lệ");
