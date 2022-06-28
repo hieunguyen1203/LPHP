@@ -1,7 +1,7 @@
 <?php
 
 /**
- * phương thức khởi tạo có tham số đầu vào
+ * method hủy của class sẽ tự động chạy khi script php kết thúc
  */
 
 class Student {
@@ -23,8 +23,19 @@ class Student {
         echo "<br> Địa chỉ : " . $this->address;
     }
 
+    function __destruct()
+    {
+        echo "<br> hàm hủy được gọi";
+        $this->name = '';
+        $this->age = '';
+        $this->address = '';
+    }
+
 }
 
-// truyền tham số cho method khởi tạo khi dùng từ khóa new ClassName()
 $student1 = new Student('nguyen van an', 21, 'hà nội');
-$student1->getInfo();
+
+echo "<br> dòng 1";
+echo "<br> dòng 2";
+echo "<br> dòng 3";
+echo "<br> script php kết thúc do tôi không viết gì nữa";
