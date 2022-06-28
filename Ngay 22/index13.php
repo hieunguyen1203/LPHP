@@ -4,15 +4,18 @@
  * Kế thừa trong PHP
  */
 
-class DienThoaiCoDien {
+class DienThoaiCoDien
+{
 
-    public $soDienThoai = '12345';
+    public string $soDienThoai = '12345';
 
-    public function goiDien(){
+    public function goiDien()
+    {
         echo "<br> DienThoaiCoDien::goiDien ";
     }
 
-    public function ngheDienThoai(){
+    public function ngheDienThoai()
+    {
         echo "<br> DienThoaiCoDien::ngheDienThoai ";
     }
 }
@@ -22,15 +25,19 @@ class DienThoaiCoDien {
 với giới hạn truy cập là public và protected
 class con không được phép kế thừa thuộc tính và phương thức private
 */
-class DienThoaiThongMinh extends DienThoaiCoDien {
+
+class DienThoaiThongMinh extends DienThoaiCoDien
+{
 
     public $internetIp = '127.0.0.1';
 
-    public function nhanTinSms(){
+    public function nhanTinSms()
+    {
         echo "<br> DienThoaiThongMinh::nhanTinSms ";
     }
 
-    public function guiEmail(){
+    public function guiEmail()
+    {
         echo "<br> DienThoaiThongMinh::guiEmail ";
     }
 
