@@ -7,10 +7,11 @@ class Student { // ngoặc nhọn mở của class
      * thuộc tính = properties là đặc điểm tính chất của 1 đối tượng
      * trước tên thuộc tính dùng các từ khóa ( public/private/protected chỉ ra giới hạn truy cập của thuộc tính đó )
      */
-    public $name = '';
-    public $age = 0;
-    public $address;
-    private $username;
+
+    public string $name = '';
+    public int $age = 0;
+    public string $address;
+    private string $username;
 
     /*
      * phương thức trong class
@@ -57,3 +58,12 @@ $student2->getInfo();
 // object Xe có biển số 30A - 12345
 // class ConMeo
 // object ConMeo có lông đen , ConMeo có lông trắng
+
+
+// dùng từ khóa instanceof kiểm tra biến có phải object của class đó không
+$a = 1;
+echo "<br>";
+var_dump($a instanceof Student);
+echo "<br>";
+var_dump($student2 instanceof Student);
+
