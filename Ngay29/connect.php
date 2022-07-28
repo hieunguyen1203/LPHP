@@ -5,10 +5,12 @@ $user = 'root';
 $password = '';
 
 try {
-    $conn = new PDO('mysql:host=localhost;dbname='.$dbname, $user,
+
+    $dsn = 'mysql:host=localhost;dbname='.$dbname.';charset=UTF8';
+    $pdo = new PDO($dsn, $user,
         $password);
-    if($conn) {
-        echo 'Kết nối thành công!';
+    if($pdo) {
+        //echo 'Kết nối thành công!';
     }
 }
 catch (Exception $e) {
