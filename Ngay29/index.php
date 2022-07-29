@@ -1,15 +1,9 @@
 <?php
 include_once 'connect.php';
 
-$sql = 'SELECT * FROM books';
-
+$sql = 'SELECT books.*, authors.author_name FROM books LEFT JOIN authors ON authors.author_id = books.book_author';
 $statement = $pdo->query($sql);
 $books = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-$stmt = $pdo->query('SELECT authors.author_name
-FROM authors RIGHT JOIN books ON books.book_author = authors.author_id');
-$ath =  $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 
 ?>
 <!doctype html>
@@ -41,22 +35,20 @@ $ath =  $stmt->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
 
         <?php
-        $i = 1;
         if(is_array($books) && !empty($books)) {
             foreach ($books as $book) {
                 ?>
                 <tr>
-                    <th scope="row"><?php echo $i ?></th>
+                    <th scope="row"><?php echo $book['book_id']; ?></th>
                     <td><?php echo $book['book_title']; ?></td>
                     <td><?php echo $book['book_price']; ?></td>
-                    <td><?php echo $ath[$i-1]['author_name']; ?></td>
+                    <td><?php echo $book['author_name']; ?></td>
                     <td><?php echo $book['book_created']; ?></td>
                     <td>
-                        <a href="edit.php" class="btn btn-warning">Sửa sách</a>
-                        <a href="delete.php" class="btn btn-danger">Xóa sách</a>
+                        <a href="edit.php?id=<?php echo $book['book_id'] ?>" class="btn btn-warning">Sửa sách</a>
+                        <a href="delete.php?id=<?php echo $book['book_id'] ?>" class="btn btn-danger">Xóa sách</a>
                     </td>
                 </tr>
-                <?php $i ++ ?>
                 <?php
 
             }

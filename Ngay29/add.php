@@ -48,10 +48,12 @@ $authors = $statement->fetchAll(PDO::FETCH_ASSOC);
                 <select class="form-select" name="book_author" id="book_author">
                     <option value="">chọn tác giả</option>
                     <?php
-                    foreach ($authors as $author) {
-                        ?>
-                        <option value="<?php echo $author['author_id'] ?>"><?php echo $author['author_name'] ?></option>
-                        <?php
+                    if(is_array($authors) && !empty($authors)) {
+                        foreach ($authors as $author) {
+                            ?>
+                            <option value="<?php echo $author['author_id'] ?>"><?php echo $author['author_name'] ?></option>
+                            <?php
+                        }
                     }
                     ?>
                 </select>
