@@ -40,10 +40,10 @@ $books = $statement->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <tr>
                     <th scope="row"><?php echo $book['book_id']; ?></th>
-                    <td><?php echo $book['book_title']; ?></td>
-                    <td><?php echo $book['book_price']; ?></td>
-                    <td><?php echo $book['author_name']; ?></td>
-                    <td><?php echo $book['book_created']; ?></td>
+                    <td><?php echo htmlspecialchars($book['book_title']); ?></td>
+                    <td><?php echo htmlspecialchars($book['book_price']); ?></td>
+                    <td><?php echo htmlspecialchars($book['author_name']); ?></td>
+                    <td><?php echo htmlspecialchars($book['book_created']); ?></td>
                     <td>
                         <a href="edit.php?id=<?php echo $book['book_id'] ?>" class="btn btn-warning">Sửa sách</a>
                         <a href="delete.php?id=<?php echo $book['book_id'] ?>" class="btn btn-danger">Xóa sách</a>
