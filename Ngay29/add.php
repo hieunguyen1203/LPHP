@@ -6,6 +6,23 @@ $sql = 'SELECT author_id, author_name FROM authors ORDER BY author_name ASC';
 $statement = $pdo->query($sql);
 $authors = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+if(isset($_GET['add'])) {
+    if (isset($_POST['book_title']) && isset($_POST['book_price']) && isset($_POST['book_intro']) && isset($_POST['book_content']) && isset($_POST['book_created']) && isset($_POST['book_author']) && !empty($_POST['book_title']) && !empty($_POST['book_intro']) && !empty($_POST['book_content']) && !empty($_POST['book_created'])) {
+        $stmt = $pdo->prepare('INSERT INTO books (book_title, book_price, book_intro, book_content, book_created, book_author) VALUES (?, ?, ?, ?, ?, ?)');
+        $stmt->bindParam(1, $_POST['book_title']);
+        $stmt->bindParam(2, $_POST['book_price'], PDO::PARAM_INT);
+        $stmt->bindParam(3, $_POST['book_intro']);
+        $stmt->bindParam(4, $_POST['book_content']);
+        $stmt->bindParam(5, $_POST['book_created']);
+        $stmt->bindParam(6, $_POST['book_author'], PDO::PARAM_INT);
+        $stmt->execute();
+        Header("Location: add.php?success");
+    }
+    else {
+        die("Hãy nhập đầy đủ dòng!");
+    }
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,14 +39,19 @@ $authors = $statement->fetchAll(PDO::FETCH_ASSOC);
         <h1>
             Thêm sách
         </h1>
-        <form name="add-book" method="post" action="">
+        <?php
+        if(isset($_GET['success'])) {
+            echo '<div class="alert alert-success">Đã thêm thành công</div>';
+        }
+        ?>
+        <form name="add-book" method="post" action="add.php?add">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tên sách</label>
-                <input type="text" class="form-control" id="book_title" placeholder="Tên sách">
+                <input type="text" class="form-control" id="book_title" name="book_title" placeholder="Tên sách">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Giá sách</label>
-                <input type="text" class="form-control" id="book_price" placeholder="Giá sách">
+                <input type="text" class="form-control" id="book_price" name="book_price" placeholder="Giá sách">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Giới thiệu</label>
@@ -41,7 +63,7 @@ $authors = $statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Thời gian tạo sách</label>
-                <input type="datetime-local" class="form-control" id="book_created" placeholder="Thời gian tạo sách">
+                <input type="datetime-local" class="form-control" id="book_created" name="book_created" placeholder="Thời gian tạo sách">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Tác giả:</label>
@@ -60,6 +82,7 @@ $authors = $statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="index.php" class="btn btn-info">Quay lại</a>
         </form>
     </div>
 </body>
