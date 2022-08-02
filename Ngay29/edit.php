@@ -27,7 +27,7 @@ if(is_array($book) || !empty($book)) {
             $stmt3->bindParam(7, $bookId, PDO::PARAM_INT);
             $stmt3->execute();
 
-            Header("Location: edit.php?id=" .$bookId . "&updated");
+            header("Location: edit.php?id=" .$bookId . "&updated");
         }
         else {
             die("Hãy nhập đầy đủ các dòng");

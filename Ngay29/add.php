@@ -87,4 +87,3 @@ if(isset($_GET['add'])) {
     </div>
 </body>
 </html>
-<?php
