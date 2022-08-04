@@ -10,7 +10,7 @@ if(isset($_GET['add'])) {
     if (isset($_POST['book_title']) && isset($_POST['book_price']) && isset($_POST['book_intro']) && isset($_POST['book_content']) && isset($_POST['book_created']) && isset($_POST['book_author']) && !empty($_POST['book_title']) && !empty($_POST['book_intro']) && !empty($_POST['book_content']) && !empty($_POST['book_created'])) {
         $stmt = $pdo->prepare('INSERT INTO books (book_title, book_price, book_intro, book_content, book_created, book_author) VALUES (?, ?, ?, ?, ?, ?)');
         $stmt->bindParam(1, $_POST['book_title']);
-        $stmt->bindParam(2, $_POST['book_price'], PDO::PARAM_INT);
+        $stmt->bindParam(2, $_POST['book_price']);
         $stmt->bindParam(3, $_POST['book_intro']);
         $stmt->bindParam(4, $_POST['book_content']);
         $stmt->bindParam(5, $_POST['book_created']);

@@ -36,7 +36,6 @@ $ath =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     $i = 1;
     if(is_array($ath) && !empty($ath)) {
 
-
         foreach ($ath as $book) {
             ?>
             <tr>

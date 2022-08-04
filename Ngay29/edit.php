@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'connect.php';
 
 $bookId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
@@ -16,21 +17,52 @@ $book = $stmt2->fetch(PDO::FETCH_ASSOC);
 if(is_array($book) || !empty($book)) {
     if(isset($_GET['update'])) {
         if(isset($_POST['book_title']) && isset($_POST['book_price']) && isset($_POST['book_intro']) && isset($_POST['book_content']) && isset($_POST['book_created']) && isset($_POST['book_author']) && !empty($_POST['book_title']) && !empty($_POST['book_intro']) && !empty($_POST['book_content']) && !empty($_POST['book_created'])) {
-
+            if(!filter_var($_POST['book_price'],FILTER_VALIDATE_FLOAT)) {
+                $_SESSION['result'] = false;
+                $_SESSION['message'] = 'Giá sách không hợp lệ';
+                header("Location: edit.php?id=".$bookId);
+                exit;
+            }
+            if(!validateDate($_POST['book_created'])) {
+                $_SESSION['result'] = false;
+                $_SESSION['message'] = 'Ngày giờ không hợp lệ';
+                header("Location: edit.php?id=".$bookId);
+                exit;
+            }
+            //$pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
             $stmt3 = $pdo->prepare('UPDATE books SET book_title = ?, book_price = ?, book_intro = ?, book_content = ?, book_created = ?, book_author = ? WHERE book_id = ?');
             $stmt3->bindParam(1, $_POST['book_title']);
-            $stmt3->bindParam(2, $_POST['book_price'], PDO::PARAM_INT);
+            $stmt3->bindParam(2, $_POST['book_price']);
             $stmt3->bindParam(3, $_POST['book_intro']);
             $stmt3->bindParam(4, $_POST['book_content']);
             $stmt3->bindParam(5, $_POST['book_created']);
             $stmt3->bindParam(6, $_POST['book_author'], PDO::PARAM_INT);
             $stmt3->bindParam(7, $bookId, PDO::PARAM_INT);
-            $stmt3->execute();
+            try{
+                if ($stmt3->execute()) {
+                    $_SESSION['result'] = true;
+                    $_SESSION['message'] = 'Cập nhật thành công';
 
-            header("Location: edit.php?id=" .$bookId . "&updated");
+                    header("Location: edit.php?id=".$bookId);
+                    exit;
+                } else {
+                    $_SESSION['result'] = false;
+                    $_SESSION['message'] = 'Cập nhật thất bại';
+                    header("Location: edit.php?id=".$bookId);
+                    exit;
+                }
+            } catch (Exception $e) {
+                $_SESSION['result'] = false;
+                $_SESSION['message'] = 'Dữ liệu nhập vào không hợp lệ';
+                header("Location: edit.php?id=".$bookId);
+                exit;
+            }
         }
         else {
-            die("Hãy nhập đầy đủ các dòng");
+            $_SESSION['result'] = false;
+            $_SESSION['message'] = 'Hãy nhập đầy đủ dòng';
+            header("Location: edit.php?id=".$bookId);
+            exit;
         }
     }
 
@@ -56,11 +88,23 @@ else {
             Sửa sách
         </h1>
         <?php
-        if(isset($_GET['updated'])) {
-            echo '<div class="alert alert-success">Đã cập nhật</div>';
+        if (isset($_SESSION['message']) && $_SESSION['message']) {
+            if (isset($_SESSION['result']) && $_SESSION['result'] == true) {
+                ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $_SESSION['message'] ?>
+                </div>
+                <?php
+            } else {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $_SESSION['message'] ?>
+                </div>
+                <?php
+            }
+            unset($_SESSION['message']);
         }
         ?>
-
         <form name="add-book" method="post" action="edit.php?id=<?php echo $bookId ?>&update">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tên sách</label>
@@ -80,7 +124,7 @@ else {
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Thời gian tạo sách</label>
-                <input type="datetime-local" value="<?php echo $book['book_created'] ?>" class="form-control" name="book_created" id="book_created" placeholder="Thời gian tạo sách">
+                <input type="text" type="datetime-local" value="<?php echo $book['book_created'] ?>" class="form-control" name="book_created" id="book_created" placeholder="Thời gian tạo sách">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Tác giả:</label>
@@ -104,3 +148,11 @@ else {
     </div>
 </body>
 </html>
+
+<?php
+function validateDate($date, $format = 'Y-m-d H:i:s')
+{
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) == $date;
+}
+?>
