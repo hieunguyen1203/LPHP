@@ -34,7 +34,7 @@ class Rels extends WriterPart
 
         $customPropertyList = $spreadsheet->getProperties()->getCustomProperties();
         if (!empty($customPropertyList)) {
-            // Relationship docProps/app.xml
+            // Relationship docProps/books.xml
             $this->writeRelationship(
                 $objWriter,
                 4,
@@ -43,12 +43,12 @@ class Rels extends WriterPart
             );
         }
 
-        // Relationship docProps/app.xml
+        // Relationship docProps/books.xml
         $this->writeRelationship(
             $objWriter,
             3,
             'http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties',
-            'docProps/app.xml'
+            'docProps/books.xml'
         );
 
         // Relationship docProps/core.xml

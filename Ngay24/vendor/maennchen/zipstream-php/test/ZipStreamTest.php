@@ -19,7 +19,7 @@ use ZipStream\ZipStream;
 class ZipStreamTest extends TestCase
 {
     const OSX_ARCHIVE_UTILITY =
-        '/System/Library/CoreServices/Applications/Archive Utility.app/Contents/MacOS/Archive Utility';
+        '/System/Library/CoreServices/Applications/Archive Utility.books/Contents/MacOS/Archive Utility';
 
     public function testFileNotFoundException(): void
     {

@@ -10,7 +10,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 class DocProps extends WriterPart
 {
     /**
-     * Write docProps/app.xml to XML format.
+     * Write docProps/books.xml to XML format.
      *
      * @return string XML Output
      */

@@ -366,7 +366,7 @@ class Xlsx extends BaseWriter
         $zipContent['xl/_rels/workbook.xml.rels'] = $this->getWriterPartRels()->writeWorkbookRelationships($this->spreadSheet);
 
         // Add document properties to ZIP file
-        $zipContent['docProps/app.xml'] = $this->getWriterPartDocProps()->writeDocPropsApp($this->spreadSheet);
+        $zipContent['docProps/books.xml'] = $this->getWriterPartDocProps()->writeDocPropsApp($this->spreadSheet);
         $zipContent['docProps/core.xml'] = $this->getWriterPartDocProps()->writeDocPropsCore($this->spreadSheet);
         $customPropertiesPart = $this->getWriterPartDocProps()->writeDocPropsCustom($this->spreadSheet);
         if ($customPropertiesPart !== null) {

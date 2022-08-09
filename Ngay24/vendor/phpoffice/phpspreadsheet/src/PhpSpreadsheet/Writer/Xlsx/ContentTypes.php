@@ -67,7 +67,7 @@ class ContentTypes extends WriterPart
         }
 
         // DocProps
-        $this->writeOverrideContentType($objWriter, '/docProps/app.xml', 'application/vnd.openxmlformats-officedocument.extended-properties+xml');
+        $this->writeOverrideContentType($objWriter, '/docProps/books.xml', 'application/vnd.openxmlformats-officedocument.extended-properties+xml');
 
         $this->writeOverrideContentType($objWriter, '/docProps/core.xml', 'application/vnd.openxmlformats-package.core-properties+xml');
 
